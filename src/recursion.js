@@ -1,10 +1,14 @@
-module.exports = function make(...arguments1) {
-    function closure = (...arguments2) {
-        if (typeof arguments2[0] === 'function' && arguments2.length === 1) {
-            arguments1.reduce(arg[0])
-        } else {
-            make(...arguments1, ...arguments2);
-        }
-    }
-    return closure;
-};
+ const recursursion = (tree) => {
+     let answer = [];
+     const recurs = (rootNode, answer, i) => {
+         answer[i] = answer[i] || [];
+         answer[i].push(rootNode.value);
+         if (rootNode.left !== undefined)
+             recurs(rootNode.left, answer, i + 1);
+         if (rootNode.right !== undefined)
+             recurs(rootNode.right, answer, i + 1);
+     };
+     recurs(tree, answer, 0);
+     return answer;
+ };
+ module.exports = recursursion;

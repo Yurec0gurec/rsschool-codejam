@@ -4,18 +4,17 @@ Object.freeze(assert);
 const sumOfOther = require('./src/SumOfOther.js');
 
 //Функция для сравнения массивов
-function Equal(arr1, arr2) {
-    let length = arr1.length;
-    if (!(length == arr2.length)) return false;
+function Equal(array1, array2) {
+    let length = array1.length;
+    if (!(length == array2.length)) return false;
     for (let i = 0; i < length; i++) {
-        if (arr1[i] !== arr2[i]) return false;
+        if (array1[i] !== array2[i]) return false;
     }
     return true;
 }
 
 
 describe('First Task', () => {
-    describe('Array', () => {
         it('1', () => {
             const ars = sumOfOther([5, 6, 7]);
             const res = Equal(ars, [13, 12, 11]);
@@ -41,8 +40,6 @@ describe('First Task', () => {
             const res = Equal(ars, [1200, 1100, 300]);
             assert.equal(res, true);
         });
-    });
-
 });
 const make = require('./src/make');
 
@@ -72,5 +69,36 @@ describe('Second Task', () => {
         const answer = make();
         assert.equal(typeof answer, 'function');
     });
+});
+
+const recursion = require('./src/recursion');
+
+describe('Third Task', () => {
+        it('1', () => {
+        let tree = {};
+        const result = recursion(tree);
+        assert.equal(result.toString(), [].toString());
+    });
+
+        
+    it('2', () => {
+        let tree = {"value":100,"left":{"value":95,"left":{"value":80},"right":{"value":99}},"right":{"value":125,"left":{"value":110},"right":{"value":130}}};
+        const result = recursion(tree);
+        assert.equal(result.toString(), [[100], [95, 125], [80,99,110,130]].toString());
+    });
+
+    it('3', () => {
+        let tree = {"value":30}
+        const result = recursion(tree);
+        assert.equal(result.toString(), [[30]].toString());
+    });
+
+    it('4', () => {
+        let tree = {"value":10, "left":{"value": 6}, "right":{"value":7}};
+        const result = recursion(tree);
+        assert.equal(result.toString(), [[10], [6, 7]].toString());
+    });
+
+    
 
 });
