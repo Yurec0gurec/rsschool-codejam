@@ -14,7 +14,7 @@ function Equal(arr1, arr2) {
 }
 
 
-describe('First_Task', () => {
+describe('First Task', () => {
     describe('Array', () => {
         it('1', () => {
             const ars = sumOfOther([5, 6, 7]);
@@ -44,4 +44,33 @@ describe('First_Task', () => {
     });
 
 });
+const make = require('./src/make');
 
+describe('Second Task', () => {
+
+    it('1', () => {
+        const answer = make(0)(20)(30)((a, b) => a + b);
+        assert.equal(answer, 50);
+    });
+
+    it('2', () => {
+        const answer = make(10)(30)(30)((a, b) => a - b);
+        assert.equal(answer, -50);
+    });
+
+    it('3', () => {
+        const answer = make(10)(30)(40)((a, b) => a * b);
+        assert.equal(answer, 12000);
+    });
+
+    it('4', () => {
+        const answer = make('a')('b')('c')((a, b) => a + b);
+        assert.equal(answer, 'abc');
+    });
+
+    it('5', () => {
+        const answer = make();
+        assert.equal(typeof answer, 'function');
+    });
+
+});
